@@ -1,10 +1,18 @@
-import {LitElement, html} from 'lit';
+import {LitElement, html, css} from 'lit';
 
-export class MyElement extends LitElement {
+export class TestElement extends LitElement {
   static properties = {
     version: {},
     name: {}
   };
+
+  static styles = css`
+    :host {
+      display: block;
+      border: solid thin rgba(0,0,0,0.25);
+      padding: 1em;
+    }
+  `;
 
   constructor() {
     super();
@@ -22,7 +30,7 @@ export class MyElement extends LitElement {
     setTimeout(() => {
       this.version = 'UPDATED';
     }, 1000);
-    this.dispatchEvent(new CustomEvent('my-event', {
+    this.dispatchEvent(new CustomEvent('menu-open', {
       detail: {
         name: this.name
       }
@@ -39,4 +47,4 @@ export class MyElement extends LitElement {
     `;
   }
 }
-customElements.define('my-element', MyElement);
+customElements.define('test-element', TestElement);
